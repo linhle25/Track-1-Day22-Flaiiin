@@ -1,0 +1,140 @@
+{
+  "schema_version": "1.0.0",
+  "metadata": {
+    "student_name": "Le Ha Hai Van",
+    "student_id": "2A202601587",
+    "group_id": "Flaiiin",
+    "submitted_at": "2026-08-24T11:33:00+07:00"
+  },
+  "industry": "healthcare-assistant",
+  "product_context": {
+    "product_name": "TriageWell AI Symptom Assistant",
+    "product_stage": "pilot",
+    "problem_statement": "Patients calling a telehealth provider's intake line often wait a long time to reach a human triage nurse, which delays urgent cases and lets non-urgent cases consume scarce nurse time; phone triage is also applied inconsistently under high call volume.",
+    "target_users": [
+      "patients seeking care",
+      "telehealth triage nurses",
+      "primary care call center staff"
+    ],
+    "value_hypothesis": "AI-assisted symptom intake and an urgency-tier recommendation can shorten time-to-appropriate-care and reduce inconsistent triage, without replacing the nurse's final decision or issuing a diagnosis.",
+    "in_scope": [
+      "collect structured symptom answers from the patient before the nurse call",
+      "recommend an urgency tier (self-care, scheduled visit, urgent visit, emergency) to the nurse and patient",
+      "surface the AI's rationale and confidence to the reviewing nurse",
+      "hard-code immediate escalation for a fixed list of red-flag emergency symptoms"
+    ],
+    "non_goals": [
+      "diagnosing a medical condition",
+      "prescribing or recommending medication or dosages",
+      "automatically closing or rejecting a case without nurse review",
+      "operating outside the two reviewed pilot markets or languages"
+    ],
+    "user_journey_moment": "Immediately after the patient opens the telehealth intake chat and before a human triage nurse calls the patient back",
+    "target_launch_or_review_date": "2026-11-15",
+    "automation_level": "recommendation",
+    "fallback_experience": "If the assistant is unavailable, times out, returns a low-confidence read, or the patient opts out, the patient is routed directly into the existing human phone/chat triage queue with no reduction in access or speed compared to today.",
+    "decision_reversibility": "hard-to-reverse"
+  },
+  "system_profile": {
+    "purpose": "Provide AI-assisted symptom intake and an urgency-tier recommendation that supports, but does not replace, a licensed nurse's triage decision in a telehealth workflow.",
+    "user_groups": [
+      "patients",
+      "telehealth triage nurses",
+      "primary care physicians",
+      "call center supervisors"
+    ],
+    "decision_impact": "The urgency-tier recommendation influences how quickly a patient is connected to care and which pathway (self-care, scheduled visit, urgent visit, emergency) is suggested first, but a licensed nurse retains authority over the final decision except for two hard-coded emergency redirect phrases.",
+    "data_types": [
+      "patient-reported symptoms",
+      "structured intake answers",
+      "self-reported vital signs",
+      "limited medical history flags",
+      "device and session metadata"
+    ],
+    "deployment_context": "Embedded as a chat-based intake step inside a telehealth provider's patient portal and a nurse-facing triage console, used before a scheduled or on-demand human triage call.",
+    "target_markets": [
+      "Vietnam",
+      "European Union"
+    ],
+    "system_boundary": {
+      "model": "A fine-tuned symptom-triage language model plus a deterministic red-flag rules engine that can override the model for a fixed list of emergency keywords",
+      "application": "A patient-facing chat intake widget and a nurse-facing triage console that shows the AI recommendation, its confidence, and its rationale",
+      "people": [
+        "patients",
+        "telehealth triage nurses",
+        "primary care physicians",
+        "Clinical AI Safety Officer",
+        "appeal and complaints reviewer"
+      ],
+      "vendors": [
+        "symptom-checker model vendor",
+        "telehealth platform host",
+        "cloud hosting provider"
+      ],
+      "upstream_inputs": [
+        "patient-entered symptom text and structured answers",
+        "clinical triage protocol rules",
+        "historical de-identified triage outcome data used for tuning"
+      ],
+      "downstream_decisions": [
+        "recommend self-care",
+        "recommend a scheduled visit",
+        "recommend an urgent visit",
+        "escalate to emergency services",
+        "route to human nurse review"
+      ]
+    }
+  },
+  "industry_risk_snapshot": {
+    "harm_severity": 5,
+    "high_stakes": 5,
+    "sensitive_data": 5,
+    "affected_scale": 4,
+    "human_review_need": 5,
+    "rationale": "Harm severity and high_stakes are rated 5 because a missed emergency symptom, as in the Epic Sepsis Model's validated real-world sensitivity of only 33% (Wong et al. 2021), can cause irreversible injury or death. Sensitive_data is rated 5 because the assistant collects detailed symptom and health-history data. Affected_scale is rated 4, not 5, because the pilot is currently scoped to one telehealth provider's patient base rather than a national population; this could rise if the pilot expands. Human_review_need is rated 5 because both the Epic Sepsis Model and Optum Impact Pro cases (Obermeyer et al. 2019; NY DFS/DOH 2019) show automated health scoring can silently fail or discriminate unless a human with authority, time, and full information reviews every non-emergency recommendation. These scores triage where to dig deeper; they are not a legal high-risk classification, which is assessed separately per jurisdiction below."
+  },
+  "legal_classification": {
+    "vietnam": {
+      "status": "uncertain-requires-legal-review",
+      "rationale": "Vietnam's AI Law 134/2025/QH15 took effect 2026-03-01 and Decision 33/2026/QD-TTg published a high-risk AI system catalog effective 2026-08-15, but the catalog's exact category text has not yet been matched against this specific symptom-triage and urgency-recommendation function, so classification cannot be finalized from title metadata alone.",
+      "source_ids": [
+        "SRC-07",
+        "SRC-08"
+      ]
+    },
+    "eu": {
+      "status": "high-risk",
+      "rationale": "The European Commission's regulatory framework overview lists AI systems embedded in products such as medical devices as high-risk, with obligations phased in from 2028-08-02, and a symptom-triage decision-support tool is likely to require a software-as-medical-device qualification review under the Medical Device Regulation; the exact qualification outcome and applicable obligation date still require a completed legal and regulatory review.",
+      "source_ids": [
+        "SRC-09"
+      ]
+    },
+    "other_markets": "Not assessed. The product currently targets only Vietnam and European Union pilot markets; any expansion, for example to the United States, would require a separate review such as FDA software-as-a-medical-device rules before launch.",
+    "legal_review_required": true
+  },
+  "product_metrics": {
+    "success_kpi": "Median time from a patient starting intake to a human-confirmed triage decision drops from the current 45 minutes to at most 20 minutes within the pilot region by the review date.",
+    "risk_kri": "The weekly rate of nurse overrides that upgrade the AI's urgency tier (an under-triage correction) stays at or below 2% of completed sessions per symptom category; a rising rate signals the assistant is trading safety for speed.",
+    "guardrail_metric": "Zero sessions may reach a patient-facing 'no urgent action needed' message for a hard-coded red-flag or emergency symptom without an immediate, logged nurse alert; any single occurrence pauses the assistant automatically.",
+    "review_cadence": "Reviewed monthly, and immediately upon any guardrail breach, confirmed missed-urgent case, model or vendor change, new symptom category, or entry into a new market."
+  },
+  "release_decision": {
+    "accountable_product_owner": "Telehealth Product Owner",
+    "risk_acceptance_owner": "Chief Clinical Safety Officer",
+    "independent_reviewer": "Clinical AI Safety Review Board",
+    "decision": "conditional-go",
+    "release_blockers": [
+      "GAP-01: Vietnam AI Law and high-risk-list classification memo not yet signed",
+      "GAP-02: EU MDR/AI Act software-as-medical-device qualification assessment not yet completed",
+      "GAP-03: Independent external validation of the urgency-tier model on the pilot's own population not yet complete"
+    ],
+    "release_conditions": [
+      "Pilot is limited to non-emergency, non-pediatric, non-obstetric symptom categories until independent validation in GAP-03 passes",
+      "Every AI-recommended tier below 'urgent' is reviewed by a licensed triage nurse before any instruction reaches the patient",
+      "Zero automated messages may tell a patient 'no action needed' for a hard-coded red-flag symptom without an immediate nurse alert",
+      "The Clinical AI Safety Officer and independent reviewer sign off before each new market or model change"
+    ],
+    "next_review_trigger": "Any guardrail breach, confirmed missed-urgent case, model or vendor change, new symptom category, new target market, or 2026-11-15, whichever comes first.",
+    "residual_risk_rationale": "With automatic case closure disabled and every below-urgent tier requiring nurse sign-off, residual risk is concentrated in undetected model bias or validation gaps rather than fully automated harm; this is acceptable for a narrow, closely monitored pilot but not for broader or emergency-adjacent rollout until GAP-01 through GAP-03 close."
+  }
+}

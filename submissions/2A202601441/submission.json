@@ -1,0 +1,120 @@
+{
+  "schema_version": "1.0.0",
+  "metadata": {
+    "student_name": "Lê Thị Linh",
+    "student_id": "2A202601441",
+    "group_id": "Flaiiin",
+    "submitted_at": "2026-08-24T12:30:00+07:00"
+  },
+  "industry": "hr-recruitment",
+  "product_context": {
+    "product_name": "Trợ lý đánh giá ứng viên",
+    "product_stage": "pilot",
+    "problem_statement": "Nhân viên tuyển dụng mất nhiều thời gian xử lý số lượng lớn hồ sơ và có thể áp dụng tiêu chí công việc thiếu nhất quán giữa các ứng viên.",
+    "target_users": ["nhân viên tuyển dụng", "quản lý tuyển dụng"],
+    "value_hypothesis": "Công cụ hỗ trợ quyết định có thể rút ngắn thời gian đưa ứng viên đủ điều kiện đến bước đánh giá của con người mà không làm giảm cơ hội của ứng viên hoặc trách nhiệm của nhân viên tuyển dụng.",
+    "in_scope": [
+      "hiển thị bằng chứng trong hồ sơ có liên quan đến công việc",
+      "đề xuất thứ tự hồ sơ để con người đánh giá",
+      "cảnh báo thông tin còn thiếu trong hồ sơ",
+      "hiển thị lý do cho từng đề xuất"
+    ],
+    "non_goals": [
+      "tự động loại ứng viên",
+      "tự động đưa ra quyết định tuyển dụng cuối cùng",
+      "suy đoán tính cách hoặc cảm xúc",
+      "sử dụng phân tích khuôn mặt hoặc giọng nói"
+    ],
+    "user_journey_moment": "Sau bước kiểm tra tính đầy đủ của hồ sơ và trước khi nhân viên tuyển dụng lập danh sách phỏng vấn",
+    "target_launch_or_review_date": "2026-10-01",
+    "automation_level": "recommendation",
+    "fallback_experience": "Khi trợ lý không khả dụng bị tạm dừng hoặc không an toàn nhân viên tuyển dụng chuyển sang hàng đợi theo thời gian nộp và sử dụng checklist đánh giá thủ công đã được phê duyệt.",
+    "decision_reversibility": "partially-reversible"
+  },
+  "system_profile": {
+    "purpose": "Xếp thứ tự các hồ sơ đầy đủ để con người đánh giá và hiển thị bằng chứng gắn với tiêu chí công việc đã được phê duyệt cho các vị trí đầu vào.",
+    "user_groups": ["nhân viên tuyển dụng", "quản lý tuyển dụng"],
+    "decision_impact": "Đề xuất ảnh hưởng đến hồ sơ nào được xem trước và cơ hội tiếp cận phỏng vấn nhưng hệ thống không được đưa ra quyết định cuối cùng.",
+    "data_types": [
+      "dữ liệu CV tổng hợp",
+      "câu trả lời trong hồ sơ",
+      "tiêu chí công việc",
+      "điểm đánh giá năng lực"
+    ],
+    "deployment_context": "Một doanh nghiệp tư nhân thử nghiệm trợ lý do nhà cung cấp vận hành trong hệ thống quản lý ứng viên và quy trình đánh giá của nhân viên tuyển dụng.",
+    "target_markets": ["Việt Nam", "Liên minh Châu Âu"],
+    "system_boundary": {
+      "model": "mô hình xếp hạng kết hợp quy tắc xác định tính đầy đủ của hồ sơ",
+      "application": "cổng thông tin ứng viên và bảng điều khiển dành cho nhân viên tuyển dụng",
+      "people": [
+        "ứng viên",
+        "nhân viên tuyển dụng",
+        "quản lý tuyển dụng",
+        "người xử lý khiếu nại"
+      ],
+      "vendors": [
+        "nhà cung cấp hệ thống quản lý ứng viên",
+        "nhà cung cấp dịch vụ mô hình"
+      ],
+      "upstream_inputs": [
+        "tiêu chí công việc đã phê duyệt",
+        "hồ sơ ứng viên tổng hợp",
+        "kết quả đánh giá năng lực"
+      ],
+      "downstream_decisions": [
+        "yêu cầu con người đánh giá",
+        "đưa vào vòng phỏng vấn",
+        "từ chối kèm lý do",
+        "chấp nhận khiếu nại"
+      ]
+    }
+  },
+  "industry_risk_snapshot": {
+    "harm_severity": 4,
+    "high_stakes": 4,
+    "sensitive_data": 3,
+    "affected_scale": 4,
+    "human_review_need": 5,
+    "rationale": "Khả năng tiếp cận việc làm ảnh hưởng đến thu nhập phẩm giá và cơ hội tương lai. Hệ thống xếp hạng có thể hoạt động ở quy mô lớn và tái tạo bất bình đẳng lịch sử trong khi ứng viên có thể không biết vì sao mình bị xếp thấp. CV chứa dữ liệu cá nhân nên cần sự giám sát có ý nghĩa của con người. Các điểm số này chỉ dùng để phân loại ưu tiên rủi ro và không phải phân loại pháp lý."
+  },
+  "legal_classification": {
+    "vietnam": {
+      "status": "uncertain-requires-legal-review",
+      "rationale": "Luật Trí tuệ nhân tạo và danh mục hệ thống AI rủi ro cao của Việt Nam cần được đối chiếu với quy trình tuyển dụng vai trò dữ liệu và thị trường thực tế trước khi chuyển từ thử nghiệm sang production.",
+      "source_ids": ["SRC-04", "SRC-05"]
+    },
+    "eu": {
+      "status": "high-risk",
+      "rationale": "Ủy ban Châu Âu xác định công cụ AI trong tuyển dụng bao gồm phần mềm sắp xếp CV là hệ thống rủi ro cao nhưng vẫn cần đánh giá vai trò và thời điểm áp dụng nghĩa vụ trước khi triển khai.",
+      "source_ids": ["SRC-06"]
+    },
+    "other_markets": "Việc triển khai tại Hoa Kỳ cần được luật sư đánh giá riêng về các nghĩa vụ chống phân biệt đối xử trong tuyển dụng.",
+    "legal_review_required": true
+  },
+  "product_metrics": {
+    "success_kpi": "Thời gian trung vị từ lúc hồ sơ đầy đủ đến lần đánh giá đầu tiên của nhân viên tuyển dụng không quá hai ngày làm việc.",
+    "risk_kri": "Chênh lệch tỷ lệ nhận diện đúng ứng viên đủ điều kiện giữa các nhóm được theo dõi không vượt quá năm điểm phần trăm.",
+    "guardrail_metric": "Số trường hợp tự động loại ứng viên luôn bằng không trong mọi lần đánh giá và mọi kỳ báo cáo production.",
+    "review_cadence": "Đánh giá hàng tháng và ngay khi vượt ngưỡng xảy ra sự cố hoặc có thay đổi quan trọng về dữ liệu tiêu chí mô hình nhà cung cấp quy trình hay thị trường mục tiêu."
+  },
+  "release_decision": {
+    "accountable_product_owner": "Chủ sở hữu sản phẩm tuyển dụng",
+    "risk_acceptance_owner": "Trưởng bộ phận tuyển dụng",
+    "independent_reviewer": "Hội đồng đánh giá AI có trách nhiệm",
+    "decision": "research-only",
+    "release_blockers": [
+      "GAP-01: cơ chế ngăn tự động loại ứng viên chưa được kiểm chứng độc lập",
+      "GAP-02: chưa hoàn thành bằng chứng đánh giá hiệu năng theo từng nhóm",
+      "GAP-03: chưa diễn tập giám sát của con người và quy trình khiếu nại",
+      "GAP-04: chưa có phê duyệt pháp lý cho Việt Nam và EU"
+    ],
+    "release_conditions": [
+      "không tồn tại đường dẫn tự động loại ứng viên",
+      "đánh giá theo từng nhóm đạt ngưỡng đã phê duyệt",
+      "quy trình can thiệp tạm dừng và khiếu nại vượt qua diễn tập",
+      "bộ phận pháp lý và quyền riêng tư ký duyệt bộ bằng chứng phát hành"
+    ],
+    "next_review_trigger": "Đánh giá lại vào ngày 2026-10-01 hoặc sớm hơn khi vượt ngưỡng xảy ra sự cố thay đổi nhà cung cấp thêm thị trường mới hoặc thay đổi đáng kể quy trình.",
+    "residual_risk_rationale": "Thiết kế giới hạn AI ở vai trò đề xuất và giữ quyền quyết định cho con người nhưng bằng chứng về công bằng giám sát khiếu nại và pháp lý chưa hoàn chỉnh. Vì vậy chưa được phát hành production và chỉ được tiếp tục nghiên cứu có kiểm soát bằng dữ liệu tổng hợp."
+  }
+}
