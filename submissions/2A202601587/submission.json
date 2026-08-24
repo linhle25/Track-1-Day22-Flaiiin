@@ -8,80 +8,80 @@
   },
   "industry": "healthcare-assistant",
   "product_context": {
-    "product_name": "TriageWell AI Symptom Assistant",
+    "product_name": "Trợ lý đánh giá triệu chứng TriageWell AI",
     "product_stage": "pilot",
-    "problem_statement": "Patients calling a telehealth provider's intake line often wait a long time to reach a human triage nurse, which delays urgent cases and lets non-urgent cases consume scarce nurse time; phone triage is also applied inconsistently under high call volume.",
+    "problem_statement": "Bệnh nhân gọi đến tổng đài tiếp nhận của nhà cung cấp dịch vụ khám chữa bệnh từ xa thường phải chờ đợi lâu để gặp điều dưỡng phân loại cuộc gọi, dẫn đến chậm trễ đối với các trường hợp khẩn cấp và làm cho các trường hợp không khẩn cấp chiếm dụng thời gian quý giá của điều dưỡng; quy trình phân loại qua điện thoại cũng bị áp dụng thiếu nhất quán khi lưu lượng cuộc gọi cao.",
     "target_users": [
-      "patients seeking care",
-      "telehealth triage nurses",
-      "primary care call center staff"
+      "bệnh nhân tìm kiếm dịch vụ chăm sóc y tế",
+      "điều dưỡng phân loại khám chữa bệnh từ xa",
+      "nhân viên tổng đài chăm sóc ban đầu"
     ],
-    "value_hypothesis": "AI-assisted symptom intake and an urgency-tier recommendation can shorten time-to-appropriate-care and reduce inconsistent triage, without replacing the nurse's final decision or issuing a diagnosis.",
+    "value_hypothesis": "Việc tiếp nhận triệu chứng có hỗ trợ của AI và đề xuất phân cấp mức độ khẩn cấp có thể rút ngắn thời gian tiếp cận dịch vụ chăm sóc phù hợp và giảm thiểu tình trạng phân loại thiếu nhất quán, mà không thay thế quyết định cuối cùng của điều dưỡng hoặc đưa ra chẩn đoán y khoa.",
     "in_scope": [
-      "collect structured symptom answers from the patient before the nurse call",
-      "recommend an urgency tier (self-care, scheduled visit, urgent visit, emergency) to the nurse and patient",
-      "surface the AI's rationale and confidence to the reviewing nurse",
-      "hard-code immediate escalation for a fixed list of red-flag emergency symptoms"
+      "thu thập các câu trả lời triệu chứng có cấu trúc từ bệnh nhân trước cuộc gọi của điều dưỡng",
+      "đề xuất mức độ khẩn cấp (tự chăm sóc, khám theo hẹn, khám khẩn cấp, cấp cứu) cho điều dưỡng và bệnh nhân",
+      "hiển thị lý do và độ tin cậy của AI cho điều dưỡng xem xét",
+      "quy định cứng việc leo thang ngay lập tức đối với danh mục các triệu chứng cấp cứu cảnh báo đỏ cố định"
     ],
     "non_goals": [
-      "diagnosing a medical condition",
-      "prescribing or recommending medication or dosages",
-      "automatically closing or rejecting a case without nurse review",
-      "operating outside the two reviewed pilot markets or languages"
+      "chẩn đoán bệnh lý hoặc tình trạng y tế",
+      "kê đơn hoặc đề xuất thuốc hoặc liều lượng thuốc",
+      "tự động đóng hoặc từ chối trường hợp mà không có sự xem xét của điều dưỡng",
+      "hoạt động ngoài hai thị trường thử nghiệm hoặc hai ngôn ngữ đã được xem xét"
     ],
-    "user_journey_moment": "Immediately after the patient opens the telehealth intake chat and before a human triage nurse calls the patient back",
+    "user_journey_moment": "Ngay sau khi bệnh nhân mở khung chat tiếp nhận khám chữa bệnh từ xa và trước khi điều dưỡng phân loại gọi lại cho bệnh nhân",
     "target_launch_or_review_date": "2026-11-15",
     "automation_level": "recommendation",
-    "fallback_experience": "If the assistant is unavailable, times out, returns a low-confidence read, or the patient opts out, the patient is routed directly into the existing human phone/chat triage queue with no reduction in access or speed compared to today.",
+    "fallback_experience": "Nếu trợ lý không khả dụng, hết thời gian chờ (timeout), trả về kết quả độ tin cậy thấp, hoặc bệnh nhân từ chối sử dụng, bệnh nhân sẽ được chuyển trực tiếp vào hàng đợi phân loại qua điện thoại/chat hiện tại với con người mà không bị giảm khả năng tiếp cận hay tốc độ xử lý so với hiện tại.",
     "decision_reversibility": "hard-to-reverse"
   },
   "system_profile": {
-    "purpose": "Provide AI-assisted symptom intake and an urgency-tier recommendation that supports, but does not replace, a licensed nurse's triage decision in a telehealth workflow.",
+    "purpose": "Cung cấp quy trình tiếp nhận triệu chứng có hỗ trợ của AI và đề xuất mức độ khẩn cấp nhằm hỗ trợ, chứ không thay thế, quyết định phân loại của điều dưỡng có giấy phép hành nghề trong quy trình khám chữa bệnh từ xa.",
     "user_groups": [
-      "patients",
-      "telehealth triage nurses",
-      "primary care physicians",
-      "call center supervisors"
+      "bệnh nhân",
+      "điều dưỡng phân loại khám chữa bệnh từ xa",
+      "bác sĩ chăm sóc ban đầu",
+      "giám sát viên tổng đài"
     ],
-    "decision_impact": "The urgency-tier recommendation influences how quickly a patient is connected to care and which pathway (self-care, scheduled visit, urgent visit, emergency) is suggested first, but a licensed nurse retains authority over the final decision except for two hard-coded emergency redirect phrases.",
+    "decision_impact": "Đề xuất mức độ khẩn cấp ảnh hưởng đến tốc độ bệnh nhân được kết nối với dịch vụ chăm sóc và lộ trình nào (tự chăm sóc, khám theo hẹn, khám khẩn cấp, cấp cứu) được gợi ý đầu tiên, nhưng điều dưỡng có giấy phép hành nghề giữ thẩm quyền quyết định cuối cùng ngoại trừ hai cụm từ chuyển hướng cấp cứu được quy định cứng.",
     "data_types": [
-      "patient-reported symptoms",
-      "structured intake answers",
-      "self-reported vital signs",
-      "limited medical history flags",
-      "device and session metadata"
+      "triệu chứng do bệnh nhân báo cáo",
+      "câu trả lời tiếp nhận có cấu trúc",
+      "chỉ số sinh tồn do bệnh nhân tự báo cáo",
+      "cờ tiền sử y tế giới hạn",
+      "dữ liệu tả thực thiết bị và phiên làm việc"
     ],
-    "deployment_context": "Embedded as a chat-based intake step inside a telehealth provider's patient portal and a nurse-facing triage console, used before a scheduled or on-demand human triage call.",
+    "deployment_context": "Được nhúng dưới dạng một bước tiếp nhận qua khung chat bên trong cổng thông tin bệnh nhân của nhà cung cấp dịch vụ khám chữa bệnh từ xa và bảng điều khiển phân loại dành cho điều dưỡng, được sử dụng trước cuộc gọi phân loại của con người theo hẹn hoặc theo yêu cầu.",
     "target_markets": [
       "Vietnam",
       "European Union"
     ],
     "system_boundary": {
-      "model": "A fine-tuned symptom-triage language model plus a deterministic red-flag rules engine that can override the model for a fixed list of emergency keywords",
-      "application": "A patient-facing chat intake widget and a nurse-facing triage console that shows the AI recommendation, its confidence, and its rationale",
+      "model": "Mô hình ngôn ngữ phân loại triệu chứng được tinh chỉnh kết hợp với động cơ quy tắc cảnh báo đỏ xác định có thể ghi đè mô hình đối với danh mục từ khóa cấp cứu cố định",
+      "application": "Widget chat tiếp nhận dành cho bệnh nhân và bảng điều khiển phân loại dành cho điều dưỡng hiển thị đề xuất của AI, độ tin cậy và lý do giải thích",
       "people": [
-        "patients",
-        "telehealth triage nurses",
-        "primary care physicians",
-        "Clinical AI Safety Officer",
-        "appeal and complaints reviewer"
+        "bệnh nhân",
+        "điều dưỡng phân loại khám chữa bệnh từ xa",
+        "bác sĩ chăm sóc ban đầu",
+        "Cán bộ an toàn AI lâm sàng",
+        "người xem xét khiếu nại và phản ánh"
       ],
       "vendors": [
-        "symptom-checker model vendor",
-        "telehealth platform host",
-        "cloud hosting provider"
+        "nhà cung cấp mô hình kiểm tra triệu chứng",
+        "đơn vị vận hành nền tảng khám chữa bệnh từ xa",
+        "nhà cung cấp dịch vụ lưu trữ đám mây"
       ],
       "upstream_inputs": [
-        "patient-entered symptom text and structured answers",
-        "clinical triage protocol rules",
-        "historical de-identified triage outcome data used for tuning"
+        "văn bản triệu chứng và câu trả lời có cấu trúc do bệnh nhân nhập",
+        "quy tắc phác đồ phân loại lâm sàng",
+        "dữ liệu kết quả phân loại lịch sử đã khử định danh được dùng để tinh chỉnh"
       ],
       "downstream_decisions": [
-        "recommend self-care",
-        "recommend a scheduled visit",
-        "recommend an urgent visit",
-        "escalate to emergency services",
-        "route to human nurse review"
+        "đề xuất tự chăm sóc",
+        "đề xuất khám theo hẹn",
+        "đề xuất khám khẩn cấp",
+        "leo thang lên dịch vụ cấp cứu",
+        "chuyển sang điều dưỡng là con người xem xét"
       ]
     }
   },
@@ -91,12 +91,12 @@
     "sensitive_data": 5,
     "affected_scale": 4,
     "human_review_need": 5,
-    "rationale": "Harm severity and high_stakes are rated 5 because a missed emergency symptom, as in the Epic Sepsis Model's validated real-world sensitivity of only 33% (Wong et al. 2021), can cause irreversible injury or death. Sensitive_data is rated 5 because the assistant collects detailed symptom and health-history data. Affected_scale is rated 4, not 5, because the pilot is currently scoped to one telehealth provider's patient base rather than a national population; this could rise if the pilot expands. Human_review_need is rated 5 because both the Epic Sepsis Model and Optum Impact Pro cases (Obermeyer et al. 2019; NY DFS/DOH 2019) show automated health scoring can silently fail or discriminate unless a human with authority, time, and full information reviews every non-emergency recommendation. These scores triage where to dig deeper; they are not a legal high-risk classification, which is assessed separately per jurisdiction below."
+    "rationale": "Harm severity (mức độ nghiêm trọng) và high_stakes (rủi ro cao) được chấm 5 điểm vì việc bỏ sót triệu chứng cấp cứu, như trong nghiên cứu kiểm chứng thực tế của Mô hình Nhiễm trùng huyết Epic chỉ đạt độ nhạy 33% (Wong et al. 2021), có thể gây thương tổn không thể đảo ngược hoặc tử vong. Sensitive_data (dữ liệu nhạy cảm) được chấm 5 điểm vì trợ lý thu thập dữ liệu triệu chứng và tiền sử sức khỏe chi tiết. Affected_scale (quy mô ảnh hưởng) được chấm 4 điểm thay vì 5 điểm vì thử nghiệm hiện chỉ giới hạn trong tập bệnh nhân của một nhà cung cấp dịch vụ khám chữa bệnh từ xa chứ chưa phải quy mô toàn quốc; mức này có thể tăng nếu thử nghiệm mở rộng. Human_review_need (nhu cầu giám sát của con người) được chấm 5 điểm vì cả hai trường hợp Epic Sepsis Model và Optum Impact Pro (Obermeyer et al. 2019; NY DFS/DOH 2019) đều cho thấy việc chấm điểm sức khỏe tự động có thể âm thầm thất bại hoặc phân biệt đối xử trừ khi con người có thẩm quyền, thời gian và đầy đủ thông tin xem xét mọi đề xuất không cấp cứu. Các điểm số này nhằm phân loại ưu tiên vị trí cần đào sâu; chúng không phải là phân loại pháp lý rủi ro cao, vốn được đánh giá riêng theo từng tài khóa/quy định thẩm quyền bên dưới."
   },
   "legal_classification": {
     "vietnam": {
       "status": "uncertain-requires-legal-review",
-      "rationale": "Vietnam's AI Law 134/2025/QH15 took effect 2026-03-01 and Decision 33/2026/QD-TTg published a high-risk AI system catalog effective 2026-08-15, but the catalog's exact category text has not yet been matched against this specific symptom-triage and urgency-recommendation function, so classification cannot be finalized from title metadata alone.",
+      "rationale": "Luật Trí tuệ nhân tạo số 134/2025/QH15 của Việt Nam có hiệu lực từ ngày 01/03/2026 và Quyết định số 33/2026/QĐ-TTg đã ban hành danh mục hệ thống AI rủi ro cao có hiệu lực từ ngày 15/08/2026, tuy nhiên văn bản chi tiết phân loại của danh mục chưa được đối chiếu trực tiếp với chức năng phân loại triệu chứng và đề xuất mức độ khẩn cấp cụ thể này, do đó chưa thể hoàn tất phân loại pháp lý chỉ dựa trên tiêu đề văn bản.",
       "source_ids": [
         "SRC-07",
         "SRC-08"
@@ -104,37 +104,37 @@
     },
     "eu": {
       "status": "high-risk",
-      "rationale": "The European Commission's regulatory framework overview lists AI systems embedded in products such as medical devices as high-risk, with obligations phased in from 2028-08-02, and a symptom-triage decision-support tool is likely to require a software-as-medical-device qualification review under the Medical Device Regulation; the exact qualification outcome and applicable obligation date still require a completed legal and regulatory review.",
+      "rationale": "Tổng quan khung pháp lý của Ủy ban Châu Âu liệt kê các hệ thống AI được nhúng trong các sản phẩm như thiết bị y tế là rủi ro cao, với các nghĩa vụ được áp dụng theo lộ trình từ ngày 02/08/2028, và công cụ hỗ trợ quyết định phân loại triệu chứng có khả năng cao đòi hỏi phải xem xét trình tự chứng nhận phần mềm như một thiết bị y tế (SaMD) theo Quy định Thiết bị Y tế (MDR); kết quả chứng nhận chính xác và ngày áp dụng nghĩa vụ cụ thể vẫn cần hoàn tất đánh giá pháp lý và quy chuẩn.",
       "source_ids": [
         "SRC-09"
       ]
     },
-    "other_markets": "Not assessed. The product currently targets only Vietnam and European Union pilot markets; any expansion, for example to the United States, would require a separate review such as FDA software-as-a-medical-device rules before launch.",
+    "other_markets": "Chưa đánh giá. Sản phẩm hiện chỉ hướng tới thị trường thử nghiệm tại Việt Nam và Liên minh Châu Âu; bất kỳ sự mở rộng nào, ví dụ sang Hoa Kỳ, đều đòi hỏi đánh giá riêng như các quy định về phần mềm như một thiết bị y tế của FDA trước khi ra mắt.",
     "legal_review_required": true
   },
   "product_metrics": {
-    "success_kpi": "Median time from a patient starting intake to a human-confirmed triage decision drops from the current 45 minutes to at most 20 minutes within the pilot region by the review date.",
-    "risk_kri": "The weekly rate of nurse overrides that upgrade the AI's urgency tier (an under-triage correction) stays at or below 2% of completed sessions per symptom category; a rising rate signals the assistant is trading safety for speed.",
-    "guardrail_metric": "Zero sessions may reach a patient-facing 'no urgent action needed' message for a hard-coded red-flag or emergency symptom without an immediate, logged nurse alert; any single occurrence pauses the assistant automatically.",
-    "review_cadence": "Reviewed monthly, and immediately upon any guardrail breach, confirmed missed-urgent case, model or vendor change, new symptom category, or entry into a new market."
+    "success_kpi": "Thời gian trung vị từ khi bệnh nhân bắt đầu tiếp nhận đến khi có quyết định phân loại được con người xác nhận giảm từ 45 phút hiện tại xuống tối đa 20 phút trong khu vực thử nghiệm trước ngày đánh giá.",
+    "risk_kri": "Tỷ lệ hàng tuần điều dưỡng ghi đè nâng mức độ khẩn cấp của AI (điều chỉnh phân loại thiếu) giữ ở mức hoặc dưới 2% số phiên hoàn tất trên mỗi danh mục triệu chứng; tỷ lệ tăng phản ánh trợ lý đang đánh đổi an toàn lấy tốc độ.",
+    "guardrail_metric": "Zero (không có) phiên làm việc nào được đưa thông điệp 'không cần xử lý khẩn' tới bệnh nhân đối với triệu chứng cảnh báo đỏ hoặc cấp cứu quy định cứng mà không có cảnh báo tức thì được ghi log tới điều dưỡng; bất kỳ sự cố đơn lẻ nào cũng tự động tạm dừng trợ lý.",
+    "review_cadence": "Được đánh giá hàng tháng, và ngay lập tức khi có bất kỳ vi phạm rào chắn an toàn nào, trường hợp bỏ sót cấp cứu được xác nhận, thay đổi mô hình hoặc nhà cung cấp, danh mục triệu chứng mới, hoặc tiến vào thị trường mới."
   },
   "release_decision": {
-    "accountable_product_owner": "Telehealth Product Owner",
-    "risk_acceptance_owner": "Chief Clinical Safety Officer",
-    "independent_reviewer": "Clinical AI Safety Review Board",
+    "accountable_product_owner": "Chủ sở hữu sản phẩm Khám chữa bệnh từ xa",
+    "risk_acceptance_owner": "Trưởng bộ phận An toàn Lâm sàng",
+    "independent_reviewer": "Hội đồng đánh giá An toàn AI Lâm sàng Độc lập",
     "decision": "conditional-go",
     "release_blockers": [
-      "GAP-01: Vietnam AI Law and high-risk-list classification memo not yet signed",
-      "GAP-02: EU MDR/AI Act software-as-medical-device qualification assessment not yet completed",
-      "GAP-03: Independent external validation of the urgency-tier model on the pilot's own population not yet complete"
+      "GAP-01: Bản ghi nhớ phân loại theo Luật AI Việt Nam và danh mục rủi ro cao chưa được ký duyệt",
+      "GAP-02: Đánh giá khả năng đáp ứng phần mềm như thiết bị y tế theo EU MDR/AI Act chưa hoàn thành",
+      "GAP-03: Kiểm chứng độc lập bên ngoài đối với mô hình phân cấp khẩn cấp trên tập bệnh nhân của chính chương trình thử nghiệm chưa hoàn tất"
     ],
     "release_conditions": [
-      "Pilot is limited to non-emergency, non-pediatric, non-obstetric symptom categories until independent validation in GAP-03 passes",
-      "Every AI-recommended tier below 'urgent' is reviewed by a licensed triage nurse before any instruction reaches the patient",
-      "Zero automated messages may tell a patient 'no action needed' for a hard-coded red-flag symptom without an immediate nurse alert",
-      "The Clinical AI Safety Officer and independent reviewer sign off before each new market or model change"
+      "Thử nghiệm giới hạn trong các danh mục triệu chứng không cấp cứu, không nhi khoa, không sản khoa cho đến khi đạt kiểm chứng độc lập ở GAP-03",
+      "Mọi mức phân loại do AI đề xuất dưới mức 'khẩn cấp' đều phải được điều dưỡng phân loại có giấy phép xem xét trước khi bất kỳ hướng dẫn nào tới tay bệnh nhân",
+      "Zero thông điệp tự động thông báo cho bệnh nhân 'không cần xử lý' đối với triệu chứng cảnh báo đỏ quy định cứng mà không có cảnh báo tức thì cho điều dưỡng",
+      "Cán bộ an toàn AI lâm sàng và người xem xét độc lập ký phê duyệt trước mỗi thị trường mới hoặc thay đổi mô hình"
     ],
-    "next_review_trigger": "Any guardrail breach, confirmed missed-urgent case, model or vendor change, new symptom category, new target market, or 2026-11-15, whichever comes first.",
-    "residual_risk_rationale": "With automatic case closure disabled and every below-urgent tier requiring nurse sign-off, residual risk is concentrated in undetected model bias or validation gaps rather than fully automated harm; this is acceptable for a narrow, closely monitored pilot but not for broader or emergency-adjacent rollout until GAP-01 through GAP-03 close."
+    "next_review_trigger": "Bất kỳ vi phạm rào chắn an toàn nào, trường hợp bỏ sót cấp cứu được xác nhận, thay đổi mô hình hoặc nhà cung cấp, danh mục triệu chứng mới, thị trường mục tiêu mới, hoặc ngày 15/11/2026, tùy điều kiện nào đến trước.",
+    "residual_risk_rationale": "Với việc tắt tính năng tự động đóng hồ sơ và mọi mức dưới khẩn cấp đều cần điều dưỡng ký duyệt, rủi ro tồn đọng tập trung vào định kiến mô hình chưa phát hiện hoặc khoảng trống kiểm chứng hơn là tác hại tự động hoàn toàn; điều này chấp nhận được đối với một chương trình thử nghiệm hẹp được giám sát chặt chẽ nhưng không áp dụng cho việc triển khai rộng hơn hoặc cận cấp cứu cho đến khi đóng GAP-01 đến GAP-03."
   }
 }
