@@ -1,0 +1,140 @@
+{
+  "schema_version": "1.0.0",
+  "metadata": {
+    "student_name": "Nguyễn Thị Tuyết Mai",
+    "student_id": "2A202601693",
+    "group_id": "Flaiiin",
+    "submitted_at": "2026-08-24T12:00:00+07:00"
+  },
+  "industry": "education-ai-tutor",
+  "product_context": {
+    "product_name": "UniTutor Pilot",
+    "product_stage": "pilot",
+    "problem_statement": "Sinh viên đại học thiếu hỗ trợ giải thích kiến thức và luyện tập có phản hồi ngoài giờ học, đặc biệt khi mắc kẹt nhưng chưa thể liên hệ giảng viên hoặc trợ giảng.",
+    "target_users": [
+      "Sinh viên đại học tham gia pilot tại Việt Nam",
+      "Giảng viên và trợ giảng giám sát nội dung học tập"
+    ],
+    "value_hypothesis": "Trong pilot tám tuần, UniTutor giúp ít nhất 70% sinh viên tham gia hoàn thành bộ bài luyện tập và làm tăng trung vị điểm post-test ít nhất 10 điểm phần trăm so với pre-test trên cùng learning objectives.",
+    "in_scope": [
+      "Giải thích khái niệm dựa trên học liệu đã được giảng viên phê duyệt",
+      "Gợi ý từng bước mà không cung cấp đáp án nộp trực tiếp",
+      "Tạo câu hỏi ôn tập và phản hồi luyện tập không tính điểm",
+      "Hiển thị nguồn học liệu và chuyển yêu cầu sang giảng viên hoặc trợ giảng"
+    ],
+    "non_goals": [
+      "Không làm bài hoặc viết bài nộp thay sinh viên",
+      "Không chấm điểm chính thức, phát hiện gian lận hoặc quyết định học vụ",
+      "Không tư vấn y tế, sức khỏe tâm thần, pháp lý hoặc tài chính",
+      "Không sử dụng dữ liệu pilot để huấn luyện model nền nếu chưa có phê duyệt riêng"
+    ],
+    "user_journey_moment": "Khi sinh viên đang tự học, ôn tập hoặc mắc kẹt ở một bước của bài luyện tập ngoài giờ hỗ trợ trực tiếp.",
+    "target_launch_or_review_date": "2026-09-30",
+    "automation_level": "recommendation",
+    "fallback_experience": "Khi không đủ căn cứ, hệ thống dừng sinh câu trả lời, hiển thị học liệu gốc và cho phép gửi câu hỏi cùng ngữ cảnh tối thiểu đến giảng viên hoặc trợ giảng; sinh viên luôn có thể bỏ qua gợi ý AI.",
+    "decision_reversibility": "reversible"
+  },
+  "system_profile": {
+    "purpose": "Cung cấp giải thích, gợi ý từng bước và câu hỏi ôn tập có dẫn nguồn để hỗ trợ sinh viên tự học ngoài giờ mà không thay thế quyết định chuyên môn của giảng viên.",
+    "user_groups": [
+      "Sinh viên đại học trong cohort pilot",
+      "Giảng viên và trợ giảng của các học phần pilot",
+      "Đội vận hành sản phẩm và hỗ trợ sự cố"
+    ],
+    "decision_impact": "Output ảnh hưởng cách sinh viên hiểu khái niệm, chọn bước giải tiếp theo và quyết định khi nào cần trợ giúp; output bị cấm dùng cho điểm số, kỷ luật hoặc quyết định học vụ.",
+    "data_types": [
+      "Câu hỏi và phản hồi hội thoại của sinh viên",
+      "Học liệu và learning objectives đã được phê duyệt",
+      "Telemetry tối thiểu về chất lượng, latency và escalation",
+      "Mã định danh pilot giả danh thay cho thông tin nhận dạng trực tiếp"
+    ],
+    "deployment_context": "Pilot tám tuần trong một số học phần đại học tại Việt Nam, chỉ mở cho cohort được phê duyệt, có giảng viên giám sát và có khả năng tắt ngay theo học phần hoặc toàn hệ thống.",
+    "target_markets": [
+      "Việt Nam"
+    ],
+    "system_boundary": {
+      "model": "Dịch vụ mô hình ngôn ngữ chưa chốt nhà cung cấp, chỉ được chọn sau vendor, privacy và safety review.",
+      "application": "Ứng dụng web UniTutor truy xuất học liệu được duyệt, kiểm tra grounding và safety, hiển thị nguồn, disclosure AI và đường dẫn escalation.",
+      "people": [
+        "Sinh viên",
+        "Giảng viên và trợ giảng",
+        "Product Owner",
+        "AI Safety và Quality Lead",
+        "Privacy hoặc Legal Reviewer",
+        "Đội vận hành và incident response"
+      ],
+      "vendors": [
+        "Nhà cung cấp model và hạ tầng sẽ được lựa chọn qua due diligence trước pilot"
+      ],
+      "upstream_inputs": [
+        "Học liệu đã được giảng viên phê duyệt",
+        "Câu hỏi và ngữ cảnh hội thoại tối thiểu của sinh viên",
+        "Chính sách scope, safety và escalation của học phần"
+      ],
+      "downstream_decisions": [
+        "Sinh viên chọn bước giải hoặc tài liệu cần học tiếp",
+        "Sinh viên quyết định yêu cầu trợ giúp con người",
+        "Giảng viên quyết định sửa, ẩn hoặc bổ sung học liệu",
+        "Đội vận hành quyết định pause, rollback hoặc re-test pilot"
+      ]
+    }
+  },
+  "industry_risk_snapshot": {
+    "harm_severity": 3,
+    "high_stakes": 2,
+    "sensitive_data": 3,
+    "affected_scale": 2,
+    "human_review_need": 4,
+    "rationale": "Harm severity là 3 vì câu trả lời sai lặp lại có thể làm sinh viên học sai hoặc mất cơ hội học tập nhưng pilot không chấm điểm. High-stakes là 2 vì output không được dùng cho tuyển sinh, điểm số hay kỷ luật. Sensitive data là 3 do hội thoại và telemetry có thể tiết lộ khó khăn học tập hoặc dữ liệu cá nhân. Affected scale là 2 do cohort và học phần bị giới hạn. Human review need là 4 vì giảng viên phải kiểm soát học liệu, review mẫu output và có quyền pause khi grounding hoặc escalation thất bại. Các điểm này chỉ dùng triage, không phải phân loại pháp lý."
+  },
+  "legal_classification": {
+    "vietnam": {
+      "status": "uncertain-requires-legal-review",
+      "rationale": "Luật Trí tuệ nhân tạo và danh mục hệ thống rủi ro cao của Việt Nam đã có hiệu lực, nhưng việc tutor ôn tập không chấm điểm có thuộc danh mục hay không phụ thuộc intended purpose và cách triển khai cụ thể. Cần legal review trước pilot, đồng thời phải đánh giá việc xử lý hội thoại theo Luật Bảo vệ dữ liệu cá nhân.",
+      "source_ids": [
+        "SRC-07",
+        "SRC-08",
+        "SRC-09"
+      ]
+    },
+    "eu": {
+      "status": "limited-transparency",
+      "rationale": "Với scope hiện tại, UniTutor là chatbot hỗ trợ ôn tập và phải disclosure việc người dùng tương tác với AI. Nó không nhằm đánh giá learning outcomes, điều khiển quá trình học theo cách quyết định tiếp cận giáo dục hoặc giám sát gian lận; nếu scope mở rộng sang các chức năng đó, phải re-classify và legal review như use case giáo dục có thể high-risk.",
+      "source_ids": [
+        "SRC-10"
+      ]
+    },
+    "other_markets": "Không đánh giá vì pilot chỉ nhắm thị trường Việt Nam.",
+    "legal_review_required": true
+  },
+  "product_metrics": {
+    "success_kpi": "Learning Outcome Owner đo trong cohort pilot tám tuần: ít nhất 70% người tham gia hoàn thành bộ bài luyện tập và trung vị post-test tăng ít nhất 10 điểm phần trăm so với pre-test trên cùng objectives.",
+    "risk_kri": "AI Safety Lead đo hàng tuần trên mẫu review phân tầng: tỷ lệ câu trả lời sai nghiêm trọng không quá 2% và tỷ lệ yêu cầu cần escalation nhưng không được chuyển tiếp không quá 1%.",
+    "guardrail_metric": "Hard limit do Product Owner sở hữu: 0 output được dùng làm căn cứ duy nhất cho điểm hoặc kỷ luật; 1 incident severity cao, privacy breach đã xác nhận, hoặc KRI vượt ngưỡng hai kỳ liên tiếp sẽ tự động pause pilot.",
+    "review_cadence": "Review vận hành hàng tuần, Product-Risk Review hai tuần một lần và review ngay trong 24 giờ sau incident nghiêm trọng, đổi model/vendor, đổi dữ liệu, đổi market hoặc mở rộng scope."
+  },
+  "release_decision": {
+    "accountable_product_owner": "Product Owner của UniTutor Pilot",
+    "risk_acceptance_owner": "Trưởng ban Product and Academic Risk Review",
+    "independent_reviewer": "Privacy Counsel và giảng viên độc lập ngoài đội sản phẩm",
+    "decision": "research-only",
+    "release_blockers": [
+      "GAP-01: chưa có evidence kiểm thử grounding và critical-error rate",
+      "GAP-02: chưa demo fallback và escalation end-to-end",
+      "GAP-03: chưa khóa cấm dùng output cho chấm điểm hoặc kỷ luật",
+      "GAP-04: chưa hoàn tất privacy review, retention và deletion test",
+      "GAP-05: chưa xác nhận logging tối thiểu và quy trình incident investigation",
+      "GAP-06: chưa có safety và subgroup evaluation được reviewer phê duyệt",
+      "GAP-07: chưa diễn tập pause, rollback và notification",
+      "GAP-08: chưa kiểm chứng disclosure AI trong toàn bộ entry point"
+    ],
+    "release_conditions": [
+      "Chỉ chuyển sang conditional-go khi GAP-01 đến GAP-08 có status done và evidence được independent reviewer ký duyệt",
+      "Pilot giới hạn tám tuần, cohort được phê duyệt, học liệu đã duyệt và automation level recommendation",
+      "Không chấm điểm, không phát hiện gian lận, không quyết định học vụ và không mở rộng market nếu chưa re-review",
+      "Dashboard KRI, lịch review và quyền pause phải hoạt động trước khi mời sinh viên"
+    ],
+    "next_review_trigger": "Ngày 2026-09-30 hoặc sớm hơn khi một blocker hoàn tất, KRI vượt ngưỡng, có incident, đổi model/vendor, thay đổi loại dữ liệu, market hoặc intended purpose.",
+    "residual_risk_rationale": "Các control dự kiến có thể giảm likelihood nhưng không loại bỏ hallucination, over-reliance, privacy loss hoặc vendor failure. Vì chưa có kết quả evaluation, privacy review và diễn tập rollback, chưa có cơ sở chấp nhận residual risk cho người dùng thật; hệ thống phải giữ ở research-only."
+  }
+}
